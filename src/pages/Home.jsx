@@ -24,6 +24,7 @@ export const Home = () => {
   return (
     <div className="container d-flex flex-column align-items-center">
       { store.planets.map(planet => <CardCreator planet={planet} key={planet.id} />) }
+      {/* {store.planets[0]?.name} */}
     </div>
   );
 };
