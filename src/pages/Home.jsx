@@ -1,30 +1,23 @@
-// import rigoImageUrl from "../assets/img/rigo-baby.jpg";
-// import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-
-// export const Home = () => {
-
-//   const {store, dispatch} =useGlobalReducer()
-
-// 	return (
-// 		<div className="text-center mt-5">
-// 			<h1>Hello Rigo!!</h1>
-// 			<p>
-// 				<img src={rigoImageUrl} />
-// 			</p>
-// 		</div>
-// 	);
-// }; 
-
-import CardCreator from "../components/CardCreator";
+import PlanetCard from "../components/planetCard"
 import useGlobalReducer from "../hooks/useGlobalReducer";
+import { useEffect } from "react";
 
 export const Home = () => {
-  const { store }  = useGlobalReducer();
-  
+  const { store } = useGlobalReducer();
+
+  useEffect(() => {
+    console.log(store)
+  }, [])
+
   return (
-    <div className="container d-flex flex-column align-items-center">
-      { store.planets.map(planet => <CardCreator planet={planet} key={planet.id} />) }
-      {/* {store.planets[0]?.name} */}
-    </div>
+    <>
+      <div className="container d-flex flex-column align-items-center">
+        <h1>STAR WARS DATABASE</h1>
+        <p>More information than you will ever need to know!</p>
+      </div>
+      <h2>PLANETS</h2>
+      {store.planets?.map(planet => <PlanetCard planet={planet} key={planet.id} />)}
+
+    </>
   );
 };
