@@ -10,8 +10,6 @@ export const Layout = () => {
 
     const { dispatch } = useGlobalReducer();
 
-    const [data, setData] = useState([]);
-
     const getData = async () => {
         fetch("https://www.swapi.tech/api/planets/")
             .then(resp => resp.json())
@@ -23,7 +21,7 @@ export const Layout = () => {
                         const allResps = resps.map(resp => resp.json());
                         return Promise.all(allResps);
                     }).then(planetData => {
-                        const allJson = planetData.map((planet) => ({uid: planet.result.uid, ...planet.result.properties}));
+                        const allJson = planetData.map((planet) => ({uid: planet.result.uid, _id: planet.result._id, favorite: false, ...planet.result.properties}));
                         dispatch({
                             type: "load_planets",
                             planets: allJson,
@@ -34,39 +32,11 @@ export const Layout = () => {
     };
 
 
-
-    // const dataPlanets = await respPlanets.json();
-        // dispatch({
-        //     type: "load_planets",
-        //     planets: data.planets,
-        // });
-
-    //     const respPeople = await fetch("https://www.swapi.tech/api/people/");
-    //     const dataPeople = await respPeople.json();
-    //     dispatch({
-    //         type: "load_people",
-    //         people: dataPeople.people,
-    //     });
-
-    //     const respVehicles = await fetch("https://www.swapi.tech/api/vehicles/");
-    //     const dataVehicles = await respVehicles.json();
-    //     dispatch({
-    //         type: "load_vehicles",
-    //         vehicles: dataVehicles.vehicles,
-    //     });
-    // };
-
     useEffect(() => {
         getData();
     }, []);
 
     return (
-        // <div className="container">
-        //     <div>
-        //         {/* {JSON.stringify(data)} */}
-        //         {data[0]?.name}
-        //     </div>
-        // </div>
         <ScrollToTop>
             <Navbar />
             <Outlet />

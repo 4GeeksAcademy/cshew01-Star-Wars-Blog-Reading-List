@@ -16,7 +16,7 @@ export const Home = () => {
         <p>More information than you will ever need to know!</p>
       </div>
       <h2>PLANETS</h2>
-      {store.planets?.map(planet => <PlanetCard planet={planet} key={planet.id} />)}
+      {store.planets?.map(planet => <PlanetCard planet={planet} key={planet._id} />)}
 
     </>
   );

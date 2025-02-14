@@ -6,6 +6,8 @@ export const Navbar = () => {
 
 	const { store } = useGlobalReducer();
 
+	console.log("Favorites in Navbar:", store.favs);
+
 	return (
 		<ul className="nav nav-tabs justify-content-end">
 			<li className="nav-item dropdown">

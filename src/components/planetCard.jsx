@@ -7,27 +7,10 @@ const PlanetCard = ({ planet }) => {
 
     const { dispatch } = useGlobalReducer();
 
-    const [favorite, setFavorite] = useState({
-        name: "",
-        id: "",
-    });
-
     const style = {
         width: 300,
         height: 200
     };
-
-    // const handleFavorite = (id,name) => {
-    //     setFavorite({
-    //         ...favorite,
-    //         id: id,
-    //         name: name,
-    //     })
-
-
-    // }
-
-
 
     return (
         <>
@@ -48,13 +31,29 @@ const PlanetCard = ({ planet }) => {
                             <Link href="#" className="card-link" to={`/details/${planet.uid}`}>
                                 Learn More
                             </Link>
-                            <button type="button" className="btn fa-regular fa-heart" onClick={() => dispatch({
+                            {/* {planet.favorite ? (<button type="button" className="btn fa-solid fa-heart" onClick={() => dispatch({
+                                type: "remove_favorite",
+                                name: planet.name,
+                            })}></button>) : (<button type="button" className="btn fa-regular fa-heart" onClick={() => dispatch({
                                 type: "add_favorite",
-                                data: planet.name,
+                                name: planet.name,
                                 category: "planet",
                                 id: planet.uid,
-                            })
-                            }></button>
+                            })}></button>)} */}
+
+                            <button
+                                type="button"
+                                className={`btn ${planet.favorite ? "fa-solid fa-heart text-danger" : "fa-regular fa-heart"}`}
+                                onClick={() =>
+                                    dispatch({
+                                        type: planet.favorite ? "remove_favorite" : "add_favorite",
+                                        name: planet.name,
+                                        category: "planet",
+                                        id: planet.uid,
+                                    })
+                                }
+                            ></button>
+
                         </div>
                     </div>
                 </div>
