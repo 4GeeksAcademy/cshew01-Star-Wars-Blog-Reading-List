@@ -31,9 +31,51 @@ export const Layout = () => {
             });
     };
 
+    const getStarships = async () => {
+        fetch("https://www.swapi.tech/api/starships/")
+            .then(resp => resp.json())
+            .then(starshipData => {
+                const starshipResps = starshipData.results.map((starship) => fetch(starship.url));
 
+                Promise.all(starshipResps)
+                    .then(resps => {
+                        const allResps = resps.map(resp => resp.json());
+                        return Promise.all(allResps);
+                    }).then(starshipData => {
+                        const allJson = starshipData.map((starship) => ({uid: starship.result.uid, _id: starship.result._id, favorite: false, ...starship.result.properties}));
+                        dispatch({
+                            type: "load_starships",
+                            starships: allJson,
+                        });
+                        // setData(allJson);
+                    });
+            });
+    };
+
+    const getPeople = async () => {
+        fetch("https://www.swapi.tech/api/people/")
+            .then(resp => resp.json())
+            .then(peopleData => {
+                const peopleResps = peopleData.results.map((people) => fetch(people.url));
+
+                Promise.all(peopleResps)
+                    .then(resps => {
+                        const allResps = resps.map(resp => resp.json());
+                        return Promise.all(allResps);
+                    }).then(peopleData => {
+                        const allJson = peopleData.map((people) => ({uid: people.result.uid, _id: people.result._id, favorite: false, ...people.result.properties}));
+                        dispatch({
+                            type: "load_people",
+                            people: allJson,
+                        });
+                        // setData(allJson);
+                    });
+            });
+    };
     useEffect(() => {
         getData();
+        getStarships();
+        getPeople();
     }, []);
 
     return (
@@ -60,7 +102,7 @@ export const Layout = () => {
 // 						<Route path="/demo" element={<Demo />} />
 // 						<Route path="/single/:theid" element={<Single />} />
 // 						<Route path="/characterDescription/:id" element={<CharacterDescription />} />
-// 						<Route path="/planetDescription/:id" element={<PlanetDescription />} />
+// 						<Route path="/starshipDescription/:id" element={<PlanetDescription />} />
 // 						<Route path="/starShipDescription/:id" element={<StarShipDescription />} />
 // 						<Route path="*" element={<h1>Not found!</h1>} />
 // 					</Routes>

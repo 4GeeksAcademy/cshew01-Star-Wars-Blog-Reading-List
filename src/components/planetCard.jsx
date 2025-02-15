@@ -7,17 +7,12 @@ const PlanetCard = ({ planet }) => {
 
     const { dispatch } = useGlobalReducer();
 
-    const style = {
-        width: 300,
-        height: 200
-    };
-
     return (
         <>
-            <div className="container p-2 m-2 text-bg-dark" >
-                <div className="d-flex flex-row flex-nowrap">
+            <div className="p-2 m-2 text-bg-dark" >
+                <div >
                     <div className="card">
-                        <img src="https://static.wikia.nocookie.net/starwars/images/c/cc/Star-wars-logo-new-tall.jpg/revision/latest/scale-to-width-down/1000?cb=20190313021755" className="card-img-top" style={style} alt="..." />
+                        <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/10/major-star-wars-planets-future-image.jpg?q=50&fit=crop&w=1140&h=&dpr=1.5" className="card-img-top" style={{ width: "300px" }} alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">{planet.name}</h5>
                             <p className="card-text">{planet.climate} {planet.terrain}</p>

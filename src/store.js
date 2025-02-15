@@ -2,33 +2,53 @@ export const initialStore = () => {
   return {
     planets: [],
     people: [],
-    vehicles: [],
+    starships: [],
     favs: [],
   };
 }
 
 export default function storeReducer(store, action = {}) {
-  // if (action.type === "load_planets") {
-  //   const { planets } = action;
 
-  //   return {
-  //     ...store,
-  //     planets: planets
-  //   }
-  // }
-
-  // Taylor starts here
   if (action.type === "load_planets") {
     const { planets } = action;
-  
+
     return {
       ...store,
-      planets: planets.map(planet => ({
-        ...planet,
-        favorite: store.favs.some(fav => fav.name === planet.name) // ✅ Ensures favorite is correct
-      })),
-    };
+      planets: planets
+    }
   }
+
+
+  if (action.type === "load_starships") {
+    const { starships } = action;
+
+    return {
+      ...store,
+      starships: starships
+    }
+  }
+
+  if (action.type === "load_people") {
+    const { people } = action;
+
+    return {
+      ...store,
+      people: people
+    }
+  }
+
+  // Taylor starts here
+  // if (action.type === "load_planets") {
+  //   const { planets } = action;
+  
+  //   return {
+  //     ...store,
+  //     planets: planets.map(planet => ({
+  //       ...planet,
+  //       favorite: store.favs.some(fav => fav.name === planet.name) // ✅ Ensures favorite is correct
+  //     })),
+  //   };
+  // }
   //Taylor ends here
 
 
@@ -43,7 +63,8 @@ export default function storeReducer(store, action = {}) {
     return {
       ...store,
       favs: [...store.favs, { name, category, id }],
-      planets: store.planets.map(planet => planet.name === name ? { ...planet, favorite: true } : planet)
+      planets: store.planets.map(planet => planet.name === name ? { ...planet, favorite: true } : planet),
+      starships: store.starships.map(starship => starship.name === name ? { ...starship, favorite: true } : starship)
     }
   }
 
@@ -61,7 +82,8 @@ export default function storeReducer(store, action = {}) {
     return {
       ...store,
       favs: store.favs.toSpliced(favorite_idx, 1),
-      planets: store.planets.map(planet => planet.name === name ? { ...planet, favorite: false } : planet)
+      planets: store.planets.map(planet => planet.name === name ? { ...planet, favorite: false } : planet),
+      starships: store.starships.map(starship => starship.name === name ? { ...starship, favorite: false } : starship)
     }
   }
   return store;
