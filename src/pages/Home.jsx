@@ -18,15 +18,15 @@ export const Home = () => {
         <p>More information than you will ever need to know!</p>
       </div>
       <h2>PLANETS</h2>
-      <div className="container-fluid d-flex flex-row flex-nowrap scrollmenu" style={{ maxWidth: "100%" }}>
+      <div className="container-fluid d-flex flex-row flex-nowrap overflow-auto mb-5" style={{ maxWidth: "100%" }}>
         {store.planets?.map(planet => <PlanetCard planet={planet} key={planet._id} />)}
       </div>
       <h2>STARSHIPS</h2>
-      <div className="container-fluid d-flex flex-row flex-nowrap scrollmenu" style={{ maxWidth: "100%" }}>
+      <div className="container-fluid d-flex flex-row flex-nowrap overflow-auto mb-5" style={{ maxWidth: "100%" }}>
         {store.starships?.map(starship => <StarshipCard starship={starship} key={starship._id} />)}
       </div>
       <h2>PEOPLE</h2>
-      <div className="container-fluid d-flex flex-row flex-nowrap scrollmenu" style={{ maxWidth: "100%" }}>
+      <div className="container-fluid d-flex flex-row flex-nowrap overflow-auto" style={{ maxWidth: "100%" }}>
         {store.people?.map(people => <PeopleCard people={people} key={people._id} />)}
       </div>
     </>

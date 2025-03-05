@@ -64,7 +64,8 @@ export default function storeReducer(store, action = {}) {
       ...store,
       favs: [...store.favs, { name, category, id }],
       planets: store.planets.map(planet => planet.name === name ? { ...planet, favorite: true } : planet),
-      starships: store.starships.map(starship => starship.name === name ? { ...starship, favorite: true } : starship)
+      starships: store.starships.map(starship => starship.name === name ? { ...starship, favorite: true } : starship),
+      people: store.people.map(people => people.name === name ? { ...people, favorite: true } : people)
     }
   }
 
@@ -83,7 +84,8 @@ export default function storeReducer(store, action = {}) {
       ...store,
       favs: store.favs.toSpliced(favorite_idx, 1),
       planets: store.planets.map(planet => planet.name === name ? { ...planet, favorite: false } : planet),
-      starships: store.starships.map(starship => starship.name === name ? { ...starship, favorite: false } : starship)
+      starships: store.starships.map(starship => starship.name === name ? { ...starship, favorite: false } : starship),
+      people: store.people.map(people => people.name === name ? { ...people, favorite: false } : people)
     }
   }
   return store;
