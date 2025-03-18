@@ -10,6 +10,8 @@ import { Home } from "./pages/Home";
 // import { Single } from "./pages/Single";
 // import { Demo } from "./pages/Demo";
 import Details from "./pages/Details";
+import PeopleDetails from "./pages/PeopleDetails";
+import StarshipDetails from "./pages/StarshipDetails";
 import MainPage from "./pages/MainPage";
 
 export const router = createBrowserRouter(
@@ -27,6 +29,8 @@ export const router = createBrowserRouter(
         <Route path= "/" element={<Home />} />
         <Route path="/mainPage" element={<MainPage />} />
         <Route path="/details/:uid" element={ <Details />} />
+        <Route path="/peopleDetails/:uid" element={ <PeopleDetails />} />
+        <Route path="/starshipDetails/:uid" element={ <StarshipDetails />} />
         
       </Route>
     )

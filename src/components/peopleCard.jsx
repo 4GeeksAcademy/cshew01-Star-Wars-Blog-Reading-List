@@ -23,7 +23,7 @@ const PeopleCard = ({ people }) => {
                                 <li className="list-group-item text-bg-dark">Rotation: {people.rotation_period} hrs with an orbit of {people.orbital_period} days </li>
                             </ul> */}
 
-                            <Link href="#" className="card-link" to={`/details/${people.uid}`}>
+                            <Link href="#" className="card-link" to={`/peopleDetails/${people.uid}`}>
                                 Learn More
                             </Link>
                             <button

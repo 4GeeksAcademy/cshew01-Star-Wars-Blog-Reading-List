@@ -23,7 +23,7 @@ const StarshipCard = ({ starship }) => {
                                 <li className="list-group-item text-bg-dark">Rotation: {starship.rotation_period} hrs with an orbit of {starship.orbital_period} days </li>
                             </ul> */}
 
-                            <Link href="#" className="card-link" to={`/details/${starship.uid}`}>
+                            <Link href="#" className="card-link" to={`/starshipDetails/${starship.uid}`}>
                                 Learn More
                             </Link>
                             <button

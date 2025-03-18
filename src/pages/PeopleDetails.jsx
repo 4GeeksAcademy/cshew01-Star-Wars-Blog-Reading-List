@@ -3,47 +3,49 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 
-const Details = () => {
+const peopleDetails = () => {
   const { uid } = useParams();
   const { store, action } = useGlobalReducer();
   
   useEffect(()=>{
-    if (!store.planets.length) {action.getData()}
+    if (!store.people.length) {action.getData()}
     console.log("here's the store from details", store)
   },[])
 
   console.log("uid from useParams", uid);
-  const planet = store.planets?.find((p)=>p.uid===uid)
-  if (!planet) return <div>Loading</div>
+  const person = store.people?.find((p)=>p.uid===uid)
+  if (!person) return <div>Loading</div>
 
   return (
     <>
        <div class="card" style={{ width: "30rem" }}>
         <img
           class="card-img-top"
-          src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/10/major-star-wars-planets-future-image.jpg?q=50&fit=crop&w=1140&h=&dpr=1.5"
+          src="https://ew.com/thmb/RKsPmLrj208FDogWd9nTC8SY_n4=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/EW_StarWars_20-1-6c84c9b72c6941ef9f49f96e4d3f0257.jpg"
           className="card-img-top"
           style={{ width: "100%" }}
         />
         <div class="card-body">
-          <h5 class="card-title">{planet.name}</h5>
-          <p className="card-text">{planet.climate} {planet.terrain}</p>
+          <h5 class="card-title">{person.name}</h5>
+          <p className="card-text">Born: {person.birth_year}</p>
           <ul className="list-group list-group-flush">
             <li className="list-group-item text-bg-dark">
-              Population: {planet.population}
+              Gender: {person.gender}
             </li>
             <li className="list-group-item text-bg-dark">
-              Diameter: {planet.diameter} km
+              Skin Color: {person.skin_color}
             </li>
             <li className="list-group-item text-bg-dark">
-              Rotation: {planet.rotation_period} hrs with an orbit of{" "}
-              {planet.orbital_period} days{" "}
+              Hair Color: {person.hair_color}
             </li>
             <li className="list-group-item text-bg-dark">
-              Surface Water: {planet.surface_water}%
+              Eye Color: {person.eye_color}
             </li>
             <li className="list-group-item text-bg-dark">
-              Gravity: {planet.gravity} G's
+              Height: {person.height} cm
+            </li>
+            <li className="list-group-item text-bg-dark">
+              Weight: {person.mass} kg
             </li>
           </ul>
           <p class="card-text">
@@ -58,4 +60,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default peopleDetails;

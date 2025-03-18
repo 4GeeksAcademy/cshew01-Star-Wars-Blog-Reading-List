@@ -37,21 +37,6 @@ export default function storeReducer(store, action = {}) {
     }
   }
 
-  // Taylor starts here
-  // if (action.type === "load_planets") {
-  //   const { planets } = action;
-  
-  //   return {
-  //     ...store,
-  //     planets: planets.map(planet => ({
-  //       ...planet,
-  //       favorite: store.favs.some(fav => fav.name === planet.name) // ✅ Ensures favorite is correct
-  //     })),
-  //   };
-  // }
-  //Taylor ends here
-
-
   if (action.type === "add_favorite") {
     const { name, category, id } = action;
 
@@ -89,23 +74,5 @@ export default function storeReducer(store, action = {}) {
     }
   }
   return store;
-
-  // if (action.type === "load_people") {
-  //   const { people } = action;
-
-  //   return {
-  //     ...store,
-  //     people: people
-  //   }
-  // }
-
-  // if (action.type === "load_vehicles") {
-  //   const { vehicles } = action;
-
-  //   return {
-  //     ...store,
-  //     vehicles: vehicles
-  //   }
-  // }
 
 }
