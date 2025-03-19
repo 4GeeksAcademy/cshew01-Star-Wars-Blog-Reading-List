@@ -19,15 +19,15 @@ const starshipDetails = () => {
 
   return (
     <>
-      <div class="card" style={{ width: "30rem" }}>
+      <div className="card" style={{ width: "30rem" }}>
         <img
-          class="card-img-top"
+          className="card-img-top"
           src="https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/05/best-star-wars-ships.jpg?q=50&fit=crop&w=1140&h=&dpr=1.5"
           className="card-img-top"
           style={{ width: "100%" }}
         />
-        <div class="card-body">
-          <h5 class="card-title">{starship.name}</h5>
+        <div className="card-body">
+          <h5 className="card-title">{starship.name}</h5>
           <p className="card-text">{starship.model}</p>
           <ul className="list-group list-group-flush">
             <li className="list-group-item text-bg-dark">
@@ -58,12 +58,12 @@ const starshipDetails = () => {
               Cargo Capacity: {starship.cargo_capacity} kg
             </li>
           </ul>
-          <p class="card-text">
+          <p className="card-text">
             This section would have some amazing information describing this
             card in far more detail; however, the API being used for this
             project doesn't contain such information.
           </p>
-          <Link href="#" class="btn btn-primary card-link" to={"/"}>
+          <Link href="#" className="btn btn-primary card-link" to={"/"}>
             Return to Main Page
           </Link>
         </div>
